@@ -8,7 +8,7 @@ function projetos(section) {
           <h3>O Futuro Chegou</h3>
           <div class="img-wrapper">
             <img
-              src="./assets/images/projects/futuro.gif"
+              src="./assets/images/projects/futuroo.gif"
               alt="GIF do projeto O Futuro Chegou."
             />
             <div class="buttons">
@@ -93,7 +93,7 @@ function projetos(section) {
         <div class="card">
           <h3>Anna Velas e sabonetes</h3>
           <div class="img-wrapper">
-            <img src="./assets/images/projects/anna.gif" alt="Imagem do projeto." />
+            <img src="./assets/images/projects/annavelas.gif" alt="Imagem do projeto." />
             <div class="buttons">
               <a href="https://github.com/Carrero007/Anna-Velas-e-Sabonetes" target="_blank" title="Repositório no Github">
                 <svg
