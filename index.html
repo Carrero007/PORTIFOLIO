@@ -1,541 +1,285 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0a10">
+<title>Pedro Carrero | Desenvolvimento de Sistemas</title>
+<meta name="description" content="Portfólio de Pedro Carrero, estudante de Desenvolvimento de Sistemas em Campinas, SP. Back-end e web.">
+<meta property="og:title" content="Pedro Carrero">
+<meta property="og:description" content="Estudante de Desenvolvimento de Sistemas. Back-end e web.">
+<meta property="og:image" content="assets/pedro.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23a855f7'/%3E%3Cpath d='M11 24V8h6a5 5 0 010 10h-6' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0a10;--text:#f1edf8;--muted:#a69fba;--line:#262036;--chip:#17122a;--accent:#b57bff;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 "Bricolage Grotesque",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(520px circle at var(--mx,70%) var(--my,20%),rgba(181,123,255,.11),transparent 75%)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.layout{position:relative;z-index:1;width:min(100% - clamp(2rem,5vw,3rem),76rem);margin-inline:auto;display:grid;grid-template-columns:minmax(16rem,22rem) minmax(0,1fr);gap:clamp(2rem,5vw,5rem)}
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Portifólio de Pedro Carrero, desenvolvedor Web Front-end e Aspirante a Back-end" />
-    <meta name="author" content="Pedro Carrero" />
-    <meta property="og:description" content="Portifólio de Pedro Carrero, desenvolvedor Web Front-end e Aspirante a Back-end" />
-    <meta property="og:image" content="./assets/images/pedro-carrero.jpg" />
-    <meta property="og:type" content="website" />
-    <meta name="keywords" content="developer, programação, dev, desenvolvedor, programador, html, css, javascript, nodejs, reactjs, react, github, frontend, front-end" />
-    <meta name="robots" content="index" />
+/* coluna fixa */
+aside{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;padding:clamp(2rem,9vh,5rem) 0 clamp(1.5rem,5vh,3rem);overflow-y:auto;scrollbar-width:none}
+.me{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.avatar{width:4.5rem;height:4.5rem;border-radius:50%;overflow:hidden;border:1px solid var(--line);flex:none}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:70% 41%;transform:scale(2.3);transform-origin:70% 41%;filter:brightness(1.25)}
+h1{font-weight:700;font-size:clamp(2.6rem,4.2vw,3.5rem);line-height:.95;letter-spacing:-.04em}
+.role{margin-top:1.1rem;font-weight:600;font-size:1.2rem;line-height:1.35}
+.tag{margin-top:.8rem;color:var(--muted);max-width:19rem}
+nav ul{list-style:none;padding:0;margin-top:clamp(1.5rem,5vh,3rem);display:grid;gap:1rem}
+nav a{display:flex;align-items:center;gap:1rem;color:var(--muted);font-weight:500;transition:color .2s}
+nav a::before{content:"";height:1px;width:2rem;background:var(--muted);transition:width .25s,background .25s}
+nav a:hover,nav a[aria-current=true]{color:var(--text)}
+nav a:hover::before,nav a[aria-current=true]::before{width:4rem;background:var(--accent)}
+.side-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.social{display:flex;gap:1.1rem;color:var(--muted);font-size:.95rem}
+.social a:hover{color:var(--accent)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:2px}
+.lang button{min-height:2rem;font:inherit;font-size:.8rem;font-weight:500;color:var(--muted);background:none;border:0;border-radius:999px;padding:.2rem .65rem;cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--text);color:var(--bg)}
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Gemunu+Libre:wght@200&display=swap"
-      rel="stylesheet"
-    />
+/* conteúdo */
+main{padding:5rem 0 3rem}
+section{padding-bottom:6rem;scroll-margin-top:3rem}
+h2{font-weight:600;font-size:1.8rem;letter-spacing:-.03em;line-height:1.1;margin-bottom:1.75rem}
+.about-grid{display:grid;grid-template-columns:1fr 14rem;gap:2.5rem;align-items:start}
+.about p{max-width:36rem;font-size:1.2rem;line-height:1.6}
+.portrait{margin:0;aspect-ratio:4/5;border-radius:1rem;overflow:hidden;border:1px solid var(--line)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:60% 58%;display:block;filter:brightness(1.2) contrast(1.04)}
+.about p+p{margin-top:1.1rem;color:var(--muted)}
 
-    <link
-      rel="shortcut icon"
-      href="./assets/icons/codigo.png"
-      type="image/x-icon"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script type="module" src="./assets/js/main.js" defer></script>
+.projects{display:grid;gap:1.25rem;margin-top:-1.75rem}
+.proj{padding:1.75rem;margin-inline:-1.75rem;border-radius:1rem;border:1px solid transparent;transition:opacity .25s,background .25s,border-color .25s}
+.projects:hover .proj:not(:hover){opacity:.45}
+.proj:hover{background:rgba(255,255,255,.035);border-color:var(--line)}
+.proj h3{font-weight:700;font-size:1.9rem;letter-spacing:-.03em;line-height:1.1;display:flex;align-items:baseline;gap:.6rem;transition:color .2s}
+.proj:hover h3{color:var(--accent)}
+.proj h3 small{font-size:.85rem;font-weight:500;color:var(--muted);letter-spacing:0}
+.proj{display:grid;grid-template-columns:1fr auto;gap:1.5rem 2.5rem;align-items:start}
+.proj>div{min-width:0}
+.proj p{margin-top:.8rem;color:var(--muted);max-width:34rem}
+.proj ul.pts{list-style:none;padding:0;margin-top:1rem;display:grid;gap:.55rem;max-width:34rem}
+.proj ul.pts li{position:relative;padding-left:1.1rem;font-size:.98rem;line-height:1.5}
+.proj ul.pts li::before{content:"";position:absolute;left:0;top:.7em;width:.45rem;height:1px;background:var(--accent)}
+.cap{display:block;margin-top:.8rem;font-size:.8rem;color:var(--muted);text-align:center}
+.phone{width:220px;height:440px;border:1px solid var(--line);border-radius:1.6rem;overflow:hidden;background:#f6f5f1;position:relative;box-shadow:0 20px 50px -20px rgba(0,0,0,.7)}
+.phone iframe{width:410px;height:780px;border:0;transform:scale(.564);transform-origin:0 0}
+.proj .go{display:inline-block;margin-top:1.1rem;font-weight:600;border-bottom:1px solid var(--accent);transition:padding .2s}
+.proj:hover .go{padding-right:.5rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;list-style:none;padding:0}
+.tags li{font-size:.8rem;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:.15rem .75rem}
+.stack{display:grid;gap:1.5rem}
+.stack h3{font-weight:500;font-size:.95rem;color:var(--muted)}
+.stack .tags{margin-top:.55rem}
 
-    <title>Pedro - Portifólio</title>
-  </head>
-  <body>
-    <nav id="navigation">
-      <div class="wrapper">
-        <a class="logo close" href="#home"> PedroCarrero </a>
+.mail{display:block;width:fit-content;max-width:100%;font-weight:600;font-size:clamp(1rem,4.6vw,2.2rem);letter-spacing:-.03em;overflow-wrap:anywhere;border-bottom:2px solid var(--line);transition:color .2s,border-color .2s}
+.mail:hover{color:var(--accent);border-color:var(--accent)}
+.contact p{margin-bottom:1.25rem;color:var(--muted)}
+footer{color:var(--muted);font-size:.9rem}
+aside .me,aside h1,.role,.tag,nav{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.role{animation-delay:.08s}.tag{animation-delay:.14s}nav{animation-delay:.2s}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}}
 
-        <div class="menu">
-          <ul>
-            <li>
-              <a id="aboutNav" class="close" href="#about">Sobre mim</a>
-            </li>
-            <li>
-              <a id="projectsNav" class="close" href="#projects">Projetos</a>
-            </li>
-            <li>
-              <a id="knowledgeNav" class="close" href="#knowledge"
-                >Conhecimentos</a
-              >
-            </li>
-            <li>
-              <a id="contactNav" class="close" href="#contact">Fale comigo</a>
-            </li>
-          </ul>
-
-          <ul class="social-links">
-            <li>
-              <a
-                href="https://www.instagram.com/_pedro_carrero/profilecard/?igsh=dWNldzJ3OXo4YXd3"
-                title="Instagram"
-                target="_blank"
-                ><svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M17 1.99997H7C4.23858 1.99997 2 4.23855 2 6.99997V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V6.99997C22 4.23855 19.7614 1.99997 17 1.99997Z"
-                    stroke="#FFFAF1"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M15.9997 11.3701C16.1231 12.2023 15.981 13.0523 15.5935 13.7991C15.206 14.5459 14.5929 15.1515 13.8413 15.5297C13.0898 15.908 12.2382 16.0397 11.4075 15.906C10.5768 15.7723 9.80947 15.3801 9.21455 14.7852C8.61962 14.1903 8.22744 13.4229 8.09377 12.5923C7.96011 11.7616 8.09177 10.91 8.47003 10.1584C8.84829 9.40691 9.45389 8.7938 10.2007 8.4063C10.9475 8.0188 11.7975 7.87665 12.6297 8.00006C13.4786 8.12594 14.2646 8.52152 14.8714 9.12836C15.4782 9.73521 15.8738 10.5211 15.9997 11.3701Z"
-                    stroke="#FFFAF1"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M17.5 6.49997H17.51"
-                    stroke="#FFFAF1"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/Carrero007"
-                title="Github"
-                target="_blank"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                >
-                  <path fill="none" d="M0 0h24v24H0z" />
-                  <path
-                    d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"
-                    fill="rgba(255,255,255,1)"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/pedro-agostinho-carrero-a54361329/"
-                title="LinkedIn"
-                target="_blank"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                >
-                  <path fill="none" d="M0 0h24v24H0z" />
-                  <path
-                    d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"
-                    fill="rgba(255,255,255,1)"
-                  />
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <button
-          aria-expanded="false"
-          aria-label="Abrir menu"
-          class="open-menu open"
-        >
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 20H30"
-              stroke="#008cff"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M10 12H30"
-              stroke="#008cff"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M18 28L30 28"
-              stroke="#008cff"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-
-        <button
-          aria-expanded="true"
-          aria-label="Fechar menu"
-          class="close-menu close"
-        >
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M30 10L10 30M10 10L30 30"
-              stroke="#FFFAF1"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
+.clock{margin-top:1.1rem;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.copy{margin-top:1.25rem;font:inherit;font-size:.95rem;font-weight:500;color:var(--text);background:none;border:1px solid var(--line);border-radius:999px;padding:.55rem 1.1rem;min-height:2.75rem;cursor:pointer;transition:border-color .2s,color .2s}
+.copy:hover{border-color:var(--accent);color:var(--accent)}
+.topbar{display:none}
+@media(max-width:1000px){
+ .topbar{display:flex;position:sticky;top:0;z-index:10;align-items:center;justify-content:space-between;gap:.5rem;padding:.4rem max(1rem,env(safe-area-inset-right)) .4rem max(1rem,env(safe-area-inset-left));background:rgba(11,10,16,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+ .tb{display:flex;gap:.2rem;font-size:.95rem;font-weight:500;color:var(--muted)}
+ .tb a{padding:.7rem .7rem;border-radius:.6rem;min-height:2.75rem;display:flex;align-items:center}
+ .tb a[aria-current=true]{color:var(--text);background:rgba(255,255,255,.06)}
+ .layout{grid-template-columns:minmax(0,1fr);gap:0}
+ aside{position:static;height:auto;padding:2.5rem 0 1rem;overflow:visible}
+ aside nav{display:none}
+ .side-foot{margin-top:1.75rem}
+ .side-foot .lang{display:none}
+ main{padding-top:2.5rem}
+ section{scroll-margin-top:4.5rem;padding-bottom:4.5rem}
+ .proj{margin-inline:-1rem;padding:1.25rem 1rem}
+}
+@media(max-width:640px){
+ .proj{grid-template-columns:minmax(0,1fr)}
+ .phone-wrap{display:none}
+ .about-grid{grid-template-columns:minmax(0,1fr)}
+ .portrait{max-width:14rem}
+ .proj h3{font-size:1.6rem}
+ .about p{font-size:1.1rem}
+}
+@media(max-height:640px) and (min-width:1001px){h1{font-size:2.4rem}.tag{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb" role="navigation" data-i18n-aria="navAria" aria-label="Principal">
+    <a href="#sobre" data-i18n="navAbout">Sobre</a>
+    <a href="#projetos" data-i18n="navProjects">Projetos</a>
+    <a href="#contato" data-i18n="navContact">Contato</a>
+  </div>
+  <div class="lang" role="group" aria-label="Idioma / Language">
+    <button type="button" data-l="pt" aria-pressed="true" lang="pt-BR">PT</button>
+    <button type="button" data-l="en" aria-pressed="false" lang="en">EN</button>
+  </div>
+</div>
+<div class="layout">
+  <aside>
+    <h1>Pedro<br>Carrero</h1>
+    <p class="role" data-i18n="role">Estudante de Desenvolvimento de Sistemas</p>
+    <p class="tag" data-i18n="tag">Crio aplicações web e back-end, e uso IA onde ela resolve um problema de verdade.</p>
+    <p class="clock">Campinas, SP · <span id="hora"></span></p>
+    <nav data-i18n-aria="navAria" aria-label="Principal">
+      <ul>
+        <li><a href="#sobre" data-i18n="navAbout">Sobre</a></li>
+        <li><a href="#projetos" data-i18n="navProjects">Projetos</a></li>
+        <li><a href="#contato" data-i18n="navContact">Contato</a></li>
+      </ul>
     </nav>
-
-    <section id="home">
-      <div class="wrapper">
-        <div class="col-a">
-          <header>
-            <h4>Olá 😄</h4>
-            <h1>Eu sou o Pedro,</h1>
-          </header>
-          <div class="content">
-            <p class="line typing">Desenvolvedor Web Front-end.</p>
-            <a class="button" href="#contact"> Fale comigo </a>
-          </div>
-        </div>
-
-        <div class="col-b">
-          <img
-            src="assets/images/notebook.png"
-            alt="Imagem de um notebook."
-            id="notebook-1"
-          />
-          <img
-            src="assets/images/notebook-2.png"
-            alt="Imagem de um notebook com tela quebrada"
-            id="notebook-2"
-          />
-          <img
-            src="assets/images/notebook-2-white.png"
-            alt="Imagem de um notebook com tela quebrada"
-            id="notebook-2-white"
-          />
-          <img
-            src="./assets/images/vidro.png"
-            alt="Imagem de estilhaços de vidro com os ícones de HTML5, CSS3 e JavaScript por cima."
-            id="vidro"
-          />
-        </div>
+    <div class="side-foot">
+      <div class="social">
+        <a href="mailto:pedroagostinhocarrero@gmail.com" data-i18n="mailLbl">E-mail</a>
+        <a href="https://github.com/Carrero007" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/pedro-agostinho-carrero" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-    </section>
-
-    <section id="about">
-      <div class="wrapper">
-        <div class="col-a">
-          <header>
-            <h2>Sobre mim</h2>
-          </header>
-          <div class="content">
-            <p>
-              Eu sou o Pedro Carrero, cursando Desenvolvimento de Sistemas na Etec de Nova Odessa e desenvolvedor web Front-end. Desenvolvo páginas e sistemas web responsívos e de layout atrativo. Estou nessa área há 1 ano e meio,
-              desenvolvendo projetos pessoais e alguns trabalhos para empresas e colegas, o
-              que me tornou um programador dedicado, organizado e proativo. Atualmente estou vivendo o aprendizado contínuo em HTML5, CSS3 e JavaScript, focando mais em tecnologias JS. Tenho como objetivo obter e compartilhar os meus conhecimentos adquiridos, visando sempre contribuir com o desenvolvimento da empresa ou do projeto em que trabalhar.
-              Atualmente consigo entregar um trabalho excepcional apenas na parte front-end, porém futuramente estarei atuando como um Dev Full-Stack.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-b">
-          <img
-            src="./assets/images/pedro-carrero.jpg"
-            alt="Imagem de Pedro sorrindo."
-          />
-        </div>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-l="pt" aria-pressed="true" lang="pt-BR">PT</button>
+        <button type="button" data-l="en" aria-pressed="false" lang="en">EN</button>
       </div>
-    </section>
-
-    <section id="projects">
-      <div class="wrapper"></div>
-    </section>
-
-    <section id="knowledge">
-      <div class="wrapper">
-        <header>
-          <h2>Conhecimentos</h2>
-        </header>
-        <div class="content">
-          <div class="cards">
-            <div class="card">
-              <img src="./assets/images/html5-1-removebg-preview.png" alt="Ícone do HTML5." />
-
-              <h3>HTML5</h3>
-              <p>
-                É a linguagem de marcação usada para estruturar o conteúdo da web, introduzindo elementos semânticos, suporte a áudio, vídeo e APIs avançadas.
-              </p>
-            </div>
-            <div class="card">
-              <img src="./assets/images/css3-removebg-preview.png" alt="Ícone do CSS3." />
-
-              <h3>CSS3</h3>
-              <p>
-                É a linguagem de estilo responsável pelo design e layout das páginas web, oferecendo recursos como animações, transições e maior controle responsivo.
-              </p>
-            </div>
-            <div class="card">
-              <img src="./assets/images/js.png" alt="Ícone do Javascript." />
-
-              <h3>JavaScript</h3>
-              <p>
-                É a linguagem de programação que torna as páginas web interativas, permitindo manipulação do DOM, validação de formulários e integração com APIs.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="wrapper">
-        <div class="col-a">
-          <header>
-            <h2>Fale comigo!</h2>
-          </header>
-          <div class="content">
-            <ul>
-              <li>
-                <a href="mailto: pedroagostinhocarrero@gmail.com" title="Enviar e-mail">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
-                      stroke="#00856F"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M22 6L12 13L2 6"
-                      stroke="#00856F"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-
-                  pedroagostinhocarrero@gmail.com
-                </a>
-              </li>
-              <li>
-                <a href="tel:+5519997296031" title="Fazer ligação"
-                  ><img
-                    src="./assets/icons/iphone.png" width="30"
-                    alt="Ícone de celular."
-                    id="cel"
-                  />
-                  +55 19 99729-6031</a
-                >
-              </li>
-            </ul>
-
-            <a
-              class="button"
-              title="Me chama pra conversarmos!"
-              href="https://api.whatsapp.com/send?phone=5519997296031&text=Olá%20Pedro%20Carrero,%20quero%20que%20me%20ajude%20com%20um%20projeto!"
-              target="_blank"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.6 14.0001C16.4 13.9001 15.1 13.3001 14.9 13.2001C14.7 13.1001 14.5 13.1001 14.3 13.3001C14.1 13.5001 13.7 14.1001 13.5 14.3001C13.4 14.5001 13.2 14.5001 13 14.4001C12.3 14.1001 11.6 13.7001 11 13.2001C10.5 12.7001 10 12.1001 9.6 11.5001C9.5 11.3001 9.6 11.1001 9.7 11.0001C9.8 10.9001 9.9 10.7001 10.1 10.6001C10.2 10.5001 10.3 10.3001 10.3 10.2001C10.4 10.1001 10.4 9.9001 10.3 9.8001C10.2 9.7001 9.7 8.5001 9.5 8.0001C9.4 7.3001 9.2 7.3001 9 7.3001C8.9 7.3001 8.7 7.3001 8.5 7.3001C8.3 7.3001 8 7.5001 7.9 7.6001C7.3 8.2001 7 8.9001 7 9.7001C7.1 10.6001 7.4 11.5001 8 12.3001C9.1 13.9001 10.5 15.2001 12.2 16.0001C12.7 16.2001 13.1 16.4001 13.6 16.5001C14.1 16.7001 14.6 16.7001 15.2 16.6001C15.9 16.5001 16.5 16.0001 16.9 15.4001C17.1 15.0001 17.1 14.6001 17 14.2001C17 14.2001 16.8 14.1001 16.6 14.0001ZM19.1 4.9001C15.2 1.0001 8.9 1.0001 5 4.9001C1.8 8.1001 1.2 13.0001 3.4 16.9001L2 22.0001L7.3 20.6001C8.8 21.4001 10.4 21.8001 12 21.8001C17.5 21.8001 21.9 17.4001 21.9 11.9001C22 9.3001 20.9 6.8001 19.1 4.9001ZM16.4 18.9001C15.1 19.7001 13.6 20.2001 12 20.2001C10.5 20.2001 9.1 19.8001 7.8 19.1001L7.5 18.9001L4.4 19.7001L5.2 16.7001L5 16.4001C2.6 12.4001 3.8 7.4001 7.7 4.9001C11.6 2.4001 16.6 3.7001 19 7.5001C21.4 11.4001 20.3 16.5001 16.4 18.9001Z"
-                  fill="white"
-                />
-              </svg>
-              WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <div class="col-b">
-          <img src="./assets/images/sorriso.png" width="800" alt="Ícone de celular." />
-        </div>
-      </div>
-    </section>
-
-    <a id="backToTopButton" title="Voltar ao topo" href="#home">
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="20" cy="20" r="20" fill="#00856F" />
-        <path
-          d="M20 27V13"
-          stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M13 20L20 13L27 20"
-          stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    </a>
-
-    <footer>
-      <div class="wrapper">
-        <div class="col-a">
-          <a class="logo" href="#home"> PedroCarrero </a>
-
-          <p>
-            &copy;<script>document.write(new Date().getFullYear());</script> Pedro Carrero. <br />
-            Todos os direitos reservados.
-          </p>
-        </div>
-
-        <div class="col-b">
-          <ul class="social-links">
-            <li>
-              <a
-                href="https://www.instagram.com/_pedro_carrero/profilecard/?igsh=dWNldzJ3OXo4YXd3"
-                title="Instagram"
-                target="_blank"
-                ><svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M17 1.99997H7C4.23858 1.99997 2 4.23855 2 6.99997V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V6.99997C22 4.23855 19.7614 1.99997 17 1.99997Z"
-                    stroke="#FFFAF1"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M15.9997 11.3701C16.1231 12.2023 15.981 13.0523 15.5935 13.7991C15.206 14.5459 14.5929 15.1515 13.8413 15.5297C13.0898 15.908 12.2382 16.0397 11.4075 15.906C10.5768 15.7723 9.80947 15.3801 9.21455 14.7852C8.61962 14.1903 8.22744 13.4229 8.09377 12.5923C7.96011 11.7616 8.09177 10.91 8.47003 10.1584C8.84829 9.40691 9.45389 8.7938 10.2007 8.4063C10.9475 8.0188 11.7975 7.87665 12.6297 8.00006C13.4786 8.12594 14.2646 8.52152 14.8714 9.12836C15.4782 9.73521 15.8738 10.5211 15.9997 11.3701Z"
-                    stroke="#FFFAF1"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M17.5 6.49997H17.51"
-                    stroke="#FFFAF1"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/Carrero007"
-                title="Github"
-                target="_blank"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                >
-                  <path fill="none" d="M0 0h24v24H0z" />
-                  <path
-                    d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"
-                    fill="rgba(255,255,255,1)"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/pedro-agostinho-carrero-a54361329/"
-                title="LinkedIn"
-                target="_blank"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                >
-                  <path fill="none" d="M0 0h24v24H0z" />
-                  <path
-                    d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"
-                    fill="rgba(255,255,255,1)"
-                  />
-                </svg>
-              </a>
-            </li>
-            <!--<li>
-              <a
-                href="https://twitter.com/lucyanovidio"
-                title="Twitter"
-                target="_blank"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                >
-                  <path fill="none" d="M0 0h24v24H0z" />
-                  <path
-                    d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"
-                    fill="rgba(255,255,255,1)"
-                  />
-                </svg>
-              </a>
-            </li>-->
-          </ul>
-        </div>
-      </div>
-    </footer>
-
-    <div id="toggle">
-      <input type="checkbox" id="sw-checkbox" />
-      <label for="sw-checkbox" title="Mudar tema">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="20"
-          height="20"
-        >
-          <path fill="none" d="M0 0h24v24H0z" />
-          <path
-            d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"
-          />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="20"
-          height="20"
-        >
-          <path fill="none" d="M0 0h24v24H0z" />
-          <path
-            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"
-            fill="rgba(255,255,255,1)"
-          />
-        </svg>
-      </label>
     </div>
-  </body>
+  </aside>
+
+  <main>
+    <section id="sobre" class="about">
+      <h2 data-i18n="navAbout">Sobre</h2>
+      <div class="about-grid">
+        <div>
+          <p data-i18n="about1">Curso Desenvolvimento de Sistemas na Etec de Nova Odessa, em Campinas, e desenvolvo projetos pessoais e trabalhos para empresas e colegas.</p>
+          <p data-i18n="about2">Comecei pelo front-end, com HTML, CSS e JavaScript, e hoje também trabalho com C# e .NET, PHP e Python. Procuro uma oportunidade para contribuir com um time e continuar aprendendo.</p>
+        </div>
+        <figure class="portrait"><img src="assets/pedro.jpeg" alt="Pedro Carrero" data-i18n-alt="photoAlt" width="720" height="1136" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <h2 data-i18n="navProjects">Projetos</h2>
+      <div class="projects">
+        <article class="proj">
+          <div>
+            <h3>Cifra <small data-i18n="cifraKind">Web app</small></h3>
+            <p data-i18n="cifraDesc">Controle financeiro que responde uma pergunta: quanto sobrou este mês? Você registra por texto, voz ou foto e a IA faz a conta.</p>
+            <ul class="pts">
+              <li data-i18n="cifraB1">Assistente de IA no chat e relatório mensal gerado automaticamente.</li>
+              <li data-i18n="cifraB2">Limites por categoria, metas, contas, cartões e faturas, com detecção de assinaturas.</li>
+              <li data-i18n="cifraB3">Instalável no celular, com bloqueio por biometria ou PIN e CPF guardado só como hash.</li>
+            </ul>
+            <ul class="tags"><li>JavaScript</li><li>PWA</li><li>IA</li></ul>
+            <a class="go" href="https://carrero007.github.io/financas/" target="_blank" rel="noopener" data-i18n="site">Abrir site</a>
+          </div>
+          <div class="phone-wrap"><div class="phone"><iframe src="https://carrero007.github.io/financas/" title="Cifra" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms"></iframe></div><span class="cap" data-i18n="live">Prévia ao vivo</span></div>
+        </article>
+        <article class="proj">
+          <div>
+            <h3>AgroScan <small data-i18n="agroKind">TCC</small></h3>
+            <p data-i18n="agroDesc">Sistema que diagnostica doenças em hortaliças a partir de uma foto, usando visão computacional com IA.</p>
+            <ul class="pts">
+              <li data-i18n="agroB1">Identifica a planta e indica o diagnóstico a partir da imagem.</li>
+              <li data-i18n="agroB2">Histórico de diagnósticos e catálogo de hortaliças.</li>
+              <li data-i18n="agroB3">Integração com a API Gemini, com prompts otimizados para gastar menos tokens.</li>
+            </ul>
+            <ul class="tags"><li>C#</li><li>.NET</li><li>Gemini</li><li>CSS</li></ul>
+            <a class="go" href="https://github.com/Carrero007/AgroScan" target="_blank" rel="noopener" data-i18n="code">Ver código</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="stack">
+      <h2 data-i18n="tech">Tecnologias</h2>
+      <div class="stack">
+        <div><h3 data-i18n="gBack">Back-end</h3><ul class="tags"><li>C#</li><li>.NET</li><li>PHP</li><li>Python</li><li>MySQL</li></ul></div>
+        <div><h3 data-i18n="gFront">Front-end</h3><ul class="tags"><li>JavaScript</li><li>TypeScript</li><li>React</li><li>HTML</li><li>CSS</li></ul></div>
+        <div><h3 data-i18n="gTools">Ferramentas</h3><ul class="tags"><li>Git</li><li>GitHub</li><li>Linux</li></ul></div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <h2 data-i18n="navContact">Contato</h2>
+      <p data-i18n="contactP">Quer conversar sobre uma vaga ou um projeto?</p>
+      <a class="mail" href="mailto:pedroagostinhocarrero@gmail.com">pedroagostinhocarrero@gmail.com</a>
+      <button type="button" class="copy" id="copiar" aria-live="polite" data-i18n="copy">Copiar e-mail</button>
+    </section>
+
+    <footer>© <span id="ano">2026</span> Pedro Carrero</footer>
+  </main>
+</div>
+
+<script>
+var r=document.documentElement;
+var T={
+ pt:{title:"Pedro Carrero | Desenvolvimento de Sistemas",desc:"Portfólio de Pedro Carrero, estudante de Desenvolvimento de Sistemas em Campinas, SP. Back-end e web.",
+  navAria:"Principal",navProjects:"Projetos",navAbout:"Sobre",navContact:"Contato",
+  role:"Estudante de Desenvolvimento de Sistemas",tag:"Crio aplicações web e back-end, e uso IA onde ela resolve um problema de verdade.",
+  agroKind:"TCC",agroDesc:"Sistema que diagnostica doenças em hortaliças a partir de uma foto, usando visão computacional com IA.",
+  agroB1:"Identifica a planta e indica o diagnóstico a partir da imagem.",agroB2:"Histórico de diagnósticos e catálogo de hortaliças.",agroB3:"Integração com a API Gemini, com prompts otimizados para gastar menos tokens.",
+  cifraKind:"Web app",cifraDesc:"Controle financeiro que responde uma pergunta: quanto sobrou este mês? Você registra por texto, voz ou foto e a IA faz a conta.",
+  cifraB1:"Assistente de IA no chat e relatório mensal gerado automaticamente.",cifraB2:"Limites por categoria, metas, contas, cartões e faturas, com detecção de assinaturas.",cifraB3:"Instalável no celular, com bloqueio por biometria ou PIN e CPF guardado só como hash.",code:"Ver código",site:"Abrir site",
+  photoAlt:"Pedro Carrero de perfil, olhando para o horizonte à noite",live:"Prévia ao vivo",copy:"Copiar e-mail",copied:"Copiado",mailLbl:"E-mail",
+  about1:"Curso Desenvolvimento de Sistemas na Etec de Nova Odessa, em Campinas, e desenvolvo projetos pessoais e trabalhos para empresas e colegas.",
+  about2:"Comecei pelo front-end, com HTML, CSS e JavaScript, e hoje também trabalho com C# e .NET, PHP e Python. Procuro uma oportunidade para contribuir com um time e continuar aprendendo.",
+  tech:"Tecnologias",gBack:"Back-end",gFront:"Front-end",gTools:"Ferramentas",contactP:"Quer conversar sobre uma vaga ou um projeto?"},
+ en:{title:"Pedro Carrero | Systems Development",desc:"Portfolio of Pedro Carrero, Systems Development student in Campinas, Brazil. Back-end and web.",
+  navAria:"Main",navProjects:"Projects",navAbout:"About",navContact:"Contact",
+  role:"Systems Development student",tag:"I build web applications and back-ends, and use AI where it solves a real problem.",
+  agroKind:"Capstone",agroDesc:"A system that diagnoses diseases in vegetable crops from a photo, using AI computer vision.",
+  agroB1:"Identifies the plant and suggests a diagnosis from the image.",agroB2:"History of diagnoses and a catalog of vegetables.",agroB3:"Integrates the Gemini API, with prompts optimized to use fewer tokens.",
+  cifraKind:"Web app",cifraDesc:"A personal finance tracker that answers one question: how much is left this month? Log by text, voice or photo and the AI does the math.",
+  cifraB1:"AI chat assistant and an automatically generated monthly report.",cifraB2:"Category limits, goals, accounts, cards and invoices, with subscription detection.",cifraB3:"Installable on your phone, with biometric or PIN lock and the CPF stored only as a hash.",code:"View code",site:"Open site",
+  photoAlt:"Pedro Carrero in profile, looking at the night skyline",live:"Live preview",copy:"Copy email",copied:"Copied",mailLbl:"Email",
+  about1:"I study Systems Development at Etec de Nova Odessa, in Campinas, and build personal projects as well as work for companies and friends.",
+  about2:"I started with front-end (HTML, CSS and JavaScript) and now also work with C# and .NET, PHP and Python. I'm looking for an opportunity to contribute to a team and keep learning.",
+  tech:"Technologies",gBack:"Back-end",gFront:"Front-end",gTools:"Tools",contactP:"Want to talk about a role or a project?"}
+};
+function setLang(l){
+  var d=T[l];r.lang=l==="pt"?"pt-BR":"en";document.title=d.title;
+  document.querySelector('meta[name=description]').content=d.desc;
+  document.querySelector('meta[property="og:description"]').content=d.desc;
+  document.querySelectorAll("[data-i18n]").forEach(function(e){e.textContent=d[e.dataset.i18n]});
+  document.querySelectorAll("[data-i18n-aria]").forEach(function(e){e.setAttribute("aria-label",d[e.dataset.i18nAria])});
+  document.querySelectorAll("[data-i18n-alt]").forEach(function(e){e.alt=d[e.dataset.i18nAlt]});
+  document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l===l)});
+  try{localStorage.setItem("lang",l)}catch(e){}
+}
+var saved=null;try{saved=localStorage.getItem("lang")}catch(e){}
+setLang(saved||((navigator.language||"pt").toLowerCase().indexOf("pt")===0?"pt":"en"));
+document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.dataset.l)})});
+document.getElementById("ano").textContent=new Date().getFullYear();
+
+/* destaque de luz que segue o cursor */
+if(matchMedia("(pointer:fine)").matches){
+  addEventListener("pointermove",function(e){r.style.setProperty("--mx",e.clientX+"px");r.style.setProperty("--my",e.clientY+"px")},{passive:true});
+}
+/* item ativo no menu */
+var links=document.querySelectorAll("nav a,.tb a");
+var io=new IntersectionObserver(function(es){es.forEach(function(en){
+  if(en.isIntersecting){links.forEach(function(a){a.setAttribute("aria-current",a.getAttribute("href")==="#"+en.target.id)})}
+})},{rootMargin:"-40% 0px -55% 0px"});
+document.querySelectorAll("main section").forEach(function(s){io.observe(s)});
+/* hora em Campinas */
+var fmt=new Intl.DateTimeFormat("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"America/Sao_Paulo"});
+function tick(){document.getElementById("hora").textContent=fmt.format(new Date())}
+tick();setInterval(tick,30000);
+/* copiar e-mail */
+var cb=document.getElementById("copiar"),email="pedroagostinhocarrero@gmail.com";
+cb.addEventListener("click",function(){
+  var done=function(){var t=T[r.lang==="en"?"en":"pt"];cb.textContent=t.copied;setTimeout(function(){cb.textContent=t.copy},1800)};
+  if(navigator.clipboard){navigator.clipboard.writeText(email).then(done,function(){location.href="mailto:"+email})}
+  else{location.href="mailto:"+email}
+});
+</script>
+</body>
 </html>
