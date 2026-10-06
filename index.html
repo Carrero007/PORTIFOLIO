@@ -1,285 +1,279 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0a10">
-<title>Pedro Carrero | Desenvolvimento de Sistemas</title>
-<meta name="description" content="Portfólio de Pedro Carrero, estudante de Desenvolvimento de Sistemas em Campinas, SP. Back-end e web.">
-<meta property="og:title" content="Pedro Carrero">
-<meta property="og:description" content="Estudante de Desenvolvimento de Sistemas. Back-end e web.">
-<meta property="og:image" content="assets/pedro.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23a855f7'/%3E%3Cpath d='M11 24V8h6a5 5 0 010 10h-6' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0b0a10;--text:#f1edf8;--muted:#a69fba;--line:#262036;--chip:#17122a;--accent:#b57bff;color-scheme:dark}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 "Bricolage Grotesque",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(520px circle at var(--mx,70%) var(--my,20%),rgba(181,123,255,.11),transparent 75%)}
-a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-.layout{position:relative;z-index:1;width:min(100% - clamp(2rem,5vw,3rem),76rem);margin-inline:auto;display:grid;grid-template-columns:minmax(16rem,22rem) minmax(0,1fr);gap:clamp(2rem,5vw,5rem)}
-
-/* coluna fixa */
-aside{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;padding:clamp(2rem,9vh,5rem) 0 clamp(1.5rem,5vh,3rem);overflow-y:auto;scrollbar-width:none}
-.me{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
-.avatar{width:4.5rem;height:4.5rem;border-radius:50%;overflow:hidden;border:1px solid var(--line);flex:none}
-.avatar img{width:100%;height:100%;object-fit:cover;object-position:70% 41%;transform:scale(2.3);transform-origin:70% 41%;filter:brightness(1.25)}
-h1{font-weight:700;font-size:clamp(2.6rem,4.2vw,3.5rem);line-height:.95;letter-spacing:-.04em}
-.role{margin-top:1.1rem;font-weight:600;font-size:1.2rem;line-height:1.35}
-.tag{margin-top:.8rem;color:var(--muted);max-width:19rem}
-nav ul{list-style:none;padding:0;margin-top:clamp(1.5rem,5vh,3rem);display:grid;gap:1rem}
-nav a{display:flex;align-items:center;gap:1rem;color:var(--muted);font-weight:500;transition:color .2s}
-nav a::before{content:"";height:1px;width:2rem;background:var(--muted);transition:width .25s,background .25s}
-nav a:hover,nav a[aria-current=true]{color:var(--text)}
-nav a:hover::before,nav a[aria-current=true]::before{width:4rem;background:var(--accent)}
-.side-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.social{display:flex;gap:1.1rem;color:var(--muted);font-size:.95rem}
-.social a:hover{color:var(--accent)}
-.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:2px}
-.lang button{min-height:2rem;font:inherit;font-size:.8rem;font-weight:500;color:var(--muted);background:none;border:0;border-radius:999px;padding:.2rem .65rem;cursor:pointer}
-.lang button[aria-pressed=true]{background:var(--text);color:var(--bg)}
-
-/* conteúdo */
-main{padding:5rem 0 3rem}
-section{padding-bottom:6rem;scroll-margin-top:3rem}
-h2{font-weight:600;font-size:1.8rem;letter-spacing:-.03em;line-height:1.1;margin-bottom:1.75rem}
-.about-grid{display:grid;grid-template-columns:1fr 14rem;gap:2.5rem;align-items:start}
-.about p{max-width:36rem;font-size:1.2rem;line-height:1.6}
-.portrait{margin:0;aspect-ratio:4/5;border-radius:1rem;overflow:hidden;border:1px solid var(--line)}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:60% 58%;display:block;filter:brightness(1.2) contrast(1.04)}
-.about p+p{margin-top:1.1rem;color:var(--muted)}
-
-.projects{display:grid;gap:1.25rem;margin-top:-1.75rem}
-.proj{padding:1.75rem;margin-inline:-1.75rem;border-radius:1rem;border:1px solid transparent;transition:opacity .25s,background .25s,border-color .25s}
-.projects:hover .proj:not(:hover){opacity:.45}
-.proj:hover{background:rgba(255,255,255,.035);border-color:var(--line)}
-.proj h3{font-weight:700;font-size:1.9rem;letter-spacing:-.03em;line-height:1.1;display:flex;align-items:baseline;gap:.6rem;transition:color .2s}
-.proj:hover h3{color:var(--accent)}
-.proj h3 small{font-size:.85rem;font-weight:500;color:var(--muted);letter-spacing:0}
-.proj{display:grid;grid-template-columns:1fr auto;gap:1.5rem 2.5rem;align-items:start}
-.proj>div{min-width:0}
-.proj p{margin-top:.8rem;color:var(--muted);max-width:34rem}
-.proj ul.pts{list-style:none;padding:0;margin-top:1rem;display:grid;gap:.55rem;max-width:34rem}
-.proj ul.pts li{position:relative;padding-left:1.1rem;font-size:.98rem;line-height:1.5}
-.proj ul.pts li::before{content:"";position:absolute;left:0;top:.7em;width:.45rem;height:1px;background:var(--accent)}
-.cap{display:block;margin-top:.8rem;font-size:.8rem;color:var(--muted);text-align:center}
-.phone{width:220px;height:440px;border:1px solid var(--line);border-radius:1.6rem;overflow:hidden;background:#f6f5f1;position:relative;box-shadow:0 20px 50px -20px rgba(0,0,0,.7)}
-.phone iframe{width:410px;height:780px;border:0;transform:scale(.564);transform-origin:0 0}
-.proj .go{display:inline-block;margin-top:1.1rem;font-weight:600;border-bottom:1px solid var(--accent);transition:padding .2s}
-.proj:hover .go{padding-right:.5rem}
-.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;list-style:none;padding:0}
-.tags li{font-size:.8rem;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:.15rem .75rem}
-.stack{display:grid;gap:1.5rem}
-.stack h3{font-weight:500;font-size:.95rem;color:var(--muted)}
-.stack .tags{margin-top:.55rem}
-
-.mail{display:block;width:fit-content;max-width:100%;font-weight:600;font-size:clamp(1rem,4.6vw,2.2rem);letter-spacing:-.03em;overflow-wrap:anywhere;border-bottom:2px solid var(--line);transition:color .2s,border-color .2s}
-.mail:hover{color:var(--accent);border-color:var(--accent)}
-.contact p{margin-bottom:1.25rem;color:var(--muted)}
-footer{color:var(--muted);font-size:.9rem}
-aside .me,aside h1,.role,.tag,nav{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
-.role{animation-delay:.08s}.tag{animation-delay:.14s}nav{animation-delay:.2s}
-@keyframes rise{from{opacity:0;transform:translateY(12px)}}
-
-.clock{margin-top:1.1rem;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
-.copy{margin-top:1.25rem;font:inherit;font-size:.95rem;font-weight:500;color:var(--text);background:none;border:1px solid var(--line);border-radius:999px;padding:.55rem 1.1rem;min-height:2.75rem;cursor:pointer;transition:border-color .2s,color .2s}
-.copy:hover{border-color:var(--accent);color:var(--accent)}
-.topbar{display:none}
-@media(max-width:1000px){
- .topbar{display:flex;position:sticky;top:0;z-index:10;align-items:center;justify-content:space-between;gap:.5rem;padding:.4rem max(1rem,env(safe-area-inset-right)) .4rem max(1rem,env(safe-area-inset-left));background:rgba(11,10,16,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
- .tb{display:flex;gap:.2rem;font-size:.95rem;font-weight:500;color:var(--muted)}
- .tb a{padding:.7rem .7rem;border-radius:.6rem;min-height:2.75rem;display:flex;align-items:center}
- .tb a[aria-current=true]{color:var(--text);background:rgba(255,255,255,.06)}
- .layout{grid-template-columns:minmax(0,1fr);gap:0}
- aside{position:static;height:auto;padding:2.5rem 0 1rem;overflow:visible}
- aside nav{display:none}
- .side-foot{margin-top:1.75rem}
- .side-foot .lang{display:none}
- main{padding-top:2.5rem}
- section{scroll-margin-top:4.5rem;padding-bottom:4.5rem}
- .proj{margin-inline:-1rem;padding:1.25rem 1rem}
-}
-@media(max-width:640px){
- .proj{grid-template-columns:minmax(0,1fr)}
- .phone-wrap{display:none}
- .about-grid{grid-template-columns:minmax(0,1fr)}
- .portrait{max-width:14rem}
- .proj h3{font-size:1.6rem}
- .about p{font-size:1.1rem}
-}
-@media(max-height:640px) and (min-width:1001px){h1{font-size:2.4rem}.tag{display:none}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-</style>
-</head>
-<body>
-<div class="topbar">
-  <div class="tb" role="navigation" data-i18n-aria="navAria" aria-label="Principal">
-    <a href="#sobre" data-i18n="navAbout">Sobre</a>
-    <a href="#projetos" data-i18n="navProjects">Projetos</a>
-    <a href="#contato" data-i18n="navContact">Contato</a>
-  </div>
-  <div class="lang" role="group" aria-label="Idioma / Language">
-    <button type="button" data-l="pt" aria-pressed="true" lang="pt-BR">PT</button>
-    <button type="button" data-l="en" aria-pressed="false" lang="en">EN</button>
-  </div>
-</div>
-<div class="layout">
-  <aside>
-    <h1>Pedro<br>Carrero</h1>
-    <p class="role" data-i18n="role">Estudante de Desenvolvimento de Sistemas</p>
-    <p class="tag" data-i18n="tag">Crio aplicações web e back-end, e uso IA onde ela resolve um problema de verdade.</p>
-    <p class="clock">Campinas, SP · <span id="hora"></span></p>
-    <nav data-i18n-aria="navAria" aria-label="Principal">
-      <ul>
-        <li><a href="#sobre" data-i18n="navAbout">Sobre</a></li>
-        <li><a href="#projetos" data-i18n="navProjects">Projetos</a></li>
-        <li><a href="#contato" data-i18n="navContact">Contato</a></li>
-      </ul>
-    </nav>
-    <div class="side-foot">
-      <div class="social">
-        <a href="mailto:pedroagostinhocarrero@gmail.com" data-i18n="mailLbl">E-mail</a>
-        <a href="https://github.com/Carrero007" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/pedro-agostinho-carrero-a54361329/" target="_blank" rel="noopener">LinkedIn</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0a10" />
+    <title>Pedro Carrero | Desenvolvimento de Sistemas</title>
+    <meta
+      name="description"
+      content="Portfólio de Pedro Carrero, estudante de Desenvolvimento de Sistemas em Campinas, SP. Back-end e web."
+    />
+    <meta property="og:title" content="Pedro Carrero" />
+    <meta
+      property="og:description"
+      content="Estudante de Desenvolvimento de Sistemas. Back-end e web."
+    />
+    <meta
+      property="og:image"
+      content="https://carrero007.github.io/PORTIFOLIO/assets/pedro.jpeg"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23a855f7'/%3E%3Cpath d='M11 24V8h6a5 5 0 010 10h-6' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div
+        class="tb"
+        role="navigation"
+        data-i18n-aria="navAria"
+        aria-label="Principal"
+      >
+        <a href="#sobre" data-i18n="navAbout">Sobre</a>
+        <a href="#projetos" data-i18n="navProjects">Projetos</a>
+        <a href="#contato" data-i18n="navContact">Contato</a>
       </div>
       <div class="lang" role="group" aria-label="Idioma / Language">
-        <button type="button" data-l="pt" aria-pressed="true" lang="pt-BR">PT</button>
-        <button type="button" data-l="en" aria-pressed="false" lang="en">EN</button>
+        <button type="button" data-l="pt" aria-pressed="true" lang="pt-BR">
+          PT
+        </button>
+        <button type="button" data-l="en" aria-pressed="false" lang="en">
+          EN
+        </button>
       </div>
     </div>
-  </aside>
-
-  <main>
-    <section id="sobre" class="about">
-      <h2 data-i18n="navAbout">Sobre</h2>
-      <div class="about-grid">
-        <div>
-          <p data-i18n="about1">Curso Desenvolvimento de Sistemas na Etec de Nova Odessa, em Campinas, e desenvolvo projetos pessoais e trabalhos para empresas e colegas.</p>
-          <p data-i18n="about2">Comecei pelo front-end, com HTML, CSS e JavaScript, e hoje também trabalho com C# e .NET, PHP e Python. Procuro uma oportunidade para contribuir com um time e continuar aprendendo.</p>
+    <div class="layout">
+      <aside>
+        <h1>Pedro<br />Carrero</h1>
+        <p class="role" data-i18n="role">
+          Estudante de Desenvolvimento de Sistemas
+        </p>
+        <p class="tag" data-i18n="tag">
+          Crio aplicações web e back-end, e uso IA onde ela resolve um problema
+          de verdade.
+        </p>
+        <p class="clock">Campinas, SP · <span id="hora"></span></p>
+        <nav data-i18n-aria="navAria" aria-label="Principal">
+          <ul>
+            <li><a href="#sobre" data-i18n="navAbout">Sobre</a></li>
+            <li><a href="#projetos" data-i18n="navProjects">Projetos</a></li>
+            <li><a href="#contato" data-i18n="navContact">Contato</a></li>
+          </ul>
+        </nav>
+        <div class="side-foot">
+          <div class="social">
+            <a href="mailto:pedroagostinhocarrero@gmail.com" data-i18n="mailLbl"
+              >E-mail</a
+            >
+            <a
+              href="https://github.com/Carrero007"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+            <a
+              href="https://www.linkedin.com/in/pedro-agostinho-carrero-a54361329/"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+          </div>
+          <div class="lang" role="group" aria-label="Idioma / Language">
+            <button type="button" data-l="pt" aria-pressed="true" lang="pt-BR">
+              PT
+            </button>
+            <button type="button" data-l="en" aria-pressed="false" lang="en">
+              EN
+            </button>
+          </div>
         </div>
-        <figure class="portrait"><img src="assets/pedro.jpeg" alt="Pedro Carrero" data-i18n-alt="photoAlt" width="720" height="1136" loading="lazy"></figure>
-      </div>
-    </section>
+      </aside>
 
-    <section id="projetos">
-      <h2 data-i18n="navProjects">Projetos</h2>
-      <div class="projects">
-        <article class="proj">
-          <div>
-            <h3>Cifra <small data-i18n="cifraKind">Web app</small></h3>
-            <p data-i18n="cifraDesc">Controle financeiro que responde uma pergunta: quanto sobrou este mês? Você registra por texto, voz ou foto e a IA faz a conta.</p>
-            <ul class="pts">
-              <li data-i18n="cifraB1">Assistente de IA no chat e relatório mensal gerado automaticamente.</li>
-              <li data-i18n="cifraB2">Limites por categoria, metas, contas, cartões e faturas, com detecção de assinaturas.</li>
-              <li data-i18n="cifraB3">Instalável no celular, com bloqueio por biometria ou PIN e CPF guardado só como hash.</li>
-            </ul>
-            <ul class="tags"><li>JavaScript</li><li>PWA</li><li>IA</li></ul>
-            <a class="go" href="https://carrero007.github.io/financas/" target="_blank" rel="noopener" data-i18n="site">Abrir site</a>
+      <main>
+        <section id="sobre" class="about">
+          <h2 data-i18n="navAbout">Sobre</h2>
+          <div class="about-grid">
+            <div>
+              <p data-i18n="about1">
+                Curso Desenvolvimento de Sistemas na Etec de Nova Odessa, em
+                Campinas, e desenvolvo projetos pessoais e trabalhos para
+                empresas e colegas.
+              </p>
+              <p data-i18n="about2">
+                Comecei pelo front-end, com HTML, CSS e JavaScript, e hoje
+                também trabalho com C# e .NET, PHP e Python. Procuro uma
+                oportunidade para contribuir com um time e continuar aprendendo.
+              </p>
+            </div>
+            <figure class="portrait">
+              <img
+                src="assets/pedro.jpeg"
+                alt="Pedro Carrero"
+                data-i18n-alt="photoAlt"
+                width="720"
+                height="1280"
+                loading="lazy"
+              />
+            </figure>
           </div>
-          <div class="phone-wrap"><div class="phone"><iframe src="https://carrero007.github.io/financas/" title="Cifra" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms"></iframe></div><span class="cap" data-i18n="live">Prévia ao vivo</span></div>
-        </article>
-        <article class="proj">
-          <div>
-            <h3>AgroScan <small data-i18n="agroKind">TCC</small></h3>
-            <p data-i18n="agroDesc">Sistema que diagnostica doenças em hortaliças a partir de uma foto, usando visão computacional com IA.</p>
-            <ul class="pts">
-              <li data-i18n="agroB1">Identifica a planta e indica o diagnóstico a partir da imagem.</li>
-              <li data-i18n="agroB2">Histórico de diagnósticos e catálogo de hortaliças.</li>
-              <li data-i18n="agroB3">Integração com a API Gemini, com prompts otimizados para gastar menos tokens.</li>
-            </ul>
-            <ul class="tags"><li>C#</li><li>.NET</li><li>Gemini</li><li>CSS</li></ul>
-            <a class="go" href="https://github.com/Carrero007/AgroScan" target="_blank" rel="noopener" data-i18n="code">Ver código</a>
+        </section>
+
+        <section id="projetos">
+          <h2 data-i18n="navProjects">Projetos</h2>
+          <div class="projects">
+            <article class="proj">
+              <div>
+                <h3>Cifra <small data-i18n="cifraKind">Web app</small></h3>
+                <p data-i18n="cifraDesc">
+                  Controle financeiro que responde uma pergunta: quanto sobrou
+                  este mês? Você registra por texto, voz ou foto e a IA faz a
+                  conta.
+                </p>
+                <ul class="pts">
+                  <li data-i18n="cifraB1">
+                    Assistente de IA no chat e relatório mensal gerado
+                    automaticamente.
+                  </li>
+                  <li data-i18n="cifraB2">
+                    Limites por categoria, metas, contas, cartões e faturas, com
+                    detecção de assinaturas.
+                  </li>
+                  <li data-i18n="cifraB3">
+                    Instalável no celular, com bloqueio por biometria ou PIN e
+                    CPF guardado só como hash.
+                  </li>
+                </ul>
+                <ul class="tags">
+                  <li>JavaScript</li>
+                  <li>PWA</li>
+                  <li>IA</li>
+                </ul>
+                <a
+                  class="go"
+                  href="https://carrero007.github.io/financas/"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="site"
+                  >Abrir site</a
+                >
+              </div>
+              <div class="phone-wrap">
+                <div class="phone">
+                  <iframe
+                    src="https://carrero007.github.io/financas/"
+                    title="Cifra"
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin allow-forms"
+                  ></iframe>
+                </div>
+                <span class="cap" data-i18n="live">Prévia ao vivo</span>
+              </div>
+            </article>
+            <article class="proj">
+              <div>
+                <h3>AgroScan <small data-i18n="agroKind">TCC</small></h3>
+                <p data-i18n="agroDesc">
+                  Sistema que diagnostica doenças em hortaliças a partir de uma
+                  foto, usando visão computacional com IA.
+                </p>
+                <ul class="pts">
+                  <li data-i18n="agroB1">
+                    Identifica a planta e indica o diagnóstico a partir da
+                    imagem.
+                  </li>
+                  <li data-i18n="agroB2">
+                    Histórico de diagnósticos e catálogo de hortaliças.
+                  </li>
+                  <li data-i18n="agroB3">
+                    Integração com a API Gemini, com prompts otimizados para
+                    gastar menos tokens.
+                  </li>
+                </ul>
+                <ul class="tags">
+                  <li>C#</li>
+                  <li>.NET</li>
+                  <li>Gemini</li>
+                  <li>CSS</li>
+                </ul>
+                <a
+                  class="go"
+                  href="https://github.com/Carrero007/AgroScan"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="code"
+                  >Ver código</a
+                >
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
-    </section>
+        </section>
 
-    <section id="stack">
-      <h2 data-i18n="tech">Tecnologias</h2>
-      <div class="stack">
-        <div><h3 data-i18n="gBack">Back-end</h3><ul class="tags"><li>C#</li><li>.NET</li><li>PHP</li><li>Python</li><li>MySQL</li></ul></div>
-        <div><h3 data-i18n="gFront">Front-end</h3><ul class="tags"><li>JavaScript</li><li>TypeScript</li><li>React</li><li>HTML</li><li>CSS</li></ul></div>
-        <div><h3 data-i18n="gTools">Ferramentas</h3><ul class="tags"><li>Git</li><li>GitHub</li><li>Linux</li></ul></div>
-      </div>
-    </section>
+        <section id="stack">
+          <h2 data-i18n="tech">Tecnologias</h2>
+          <div class="stack">
+            <div>
+              <h3 data-i18n="gBack">Back-end</h3>
+              <ul class="tags">
+                <li>C#</li>
+                <li>.NET</li>
+                <li>PHP</li>
+                <li>Python</li>
+                <li>MySQL</li>
+              </ul>
+            </div>
+            <div>
+              <h3 data-i18n="gFront">Front-end</h3>
+              <ul class="tags">
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+                <li>React</li>
+                <li>HTML</li>
+                <li>CSS</li>
+              </ul>
+            </div>
+            <div>
+              <h3 data-i18n="gTools">Ferramentas</h3>
+              <ul class="tags">
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>Linux</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-    <section id="contato" class="contact">
-      <h2 data-i18n="navContact">Contato</h2>
-      <p data-i18n="contactP">Quer conversar sobre uma vaga ou um projeto?</p>
-      <a class="mail" href="mailto:pedroagostinhocarrero@gmail.com">pedroagostinhocarrero@gmail.com</a>
-      <button type="button" class="copy" id="copiar" aria-live="polite" data-i18n="copy">Copiar e-mail</button>
-    </section>
+        <section id="contato" class="contact">
+          <h2 data-i18n="navContact">Contato</h2>
+          <p data-i18n="contactP">
+            Quer conversar sobre uma vaga ou um projeto?
+          </p>
+          <a class="mail" href="mailto:pedroagostinhocarrero@gmail.com"
+            >pedroagostinhocarrero@gmail.com</a
+          >
+          <button
+            type="button"
+            class="copy"
+            id="copiar"
+            aria-live="polite"
+            data-i18n="copy"
+          >
+            Copiar e-mail
+          </button>
+        </section>
 
-    <footer>© <span id="ano">2026</span> Pedro Carrero</footer>
-  </main>
-</div>
+        <footer>© <span id="ano">2026</span> Pedro Carrero</footer>
+      </main>
+    </div>
 
-<script>
-var r=document.documentElement;
-var T={
- pt:{title:"Pedro Carrero | Desenvolvimento de Sistemas",desc:"Portfólio de Pedro Carrero, estudante de Desenvolvimento de Sistemas em Campinas, SP. Back-end e web.",
-  navAria:"Principal",navProjects:"Projetos",navAbout:"Sobre",navContact:"Contato",
-  role:"Estudante de Desenvolvimento de Sistemas",tag:"Crio aplicações web e back-end, e uso IA onde ela resolve um problema de verdade.",
-  agroKind:"TCC",agroDesc:"Sistema que diagnostica doenças em hortaliças a partir de uma foto, usando visão computacional com IA.",
-  agroB1:"Identifica a planta e indica o diagnóstico a partir da imagem.",agroB2:"Histórico de diagnósticos e catálogo de hortaliças.",agroB3:"Integração com a API Gemini, com prompts otimizados para gastar menos tokens.",
-  cifraKind:"Web app",cifraDesc:"Controle financeiro que responde uma pergunta: quanto sobrou este mês? Você registra por texto, voz ou foto e a IA faz a conta.",
-  cifraB1:"Assistente de IA no chat e relatório mensal gerado automaticamente.",cifraB2:"Limites por categoria, metas, contas, cartões e faturas, com detecção de assinaturas.",cifraB3:"Instalável no celular, com bloqueio por biometria ou PIN e CPF guardado só como hash.",code:"Ver código",site:"Abrir site",
-  photoAlt:"Pedro Carrero de perfil, olhando para o horizonte à noite",live:"Prévia ao vivo",copy:"Copiar e-mail",copied:"Copiado",mailLbl:"E-mail",
-  about1:"Curso Desenvolvimento de Sistemas na Etec de Nova Odessa, em Campinas, e desenvolvo projetos pessoais e trabalhos para empresas e colegas.",
-  about2:"Comecei pelo front-end, com HTML, CSS e JavaScript, e hoje também trabalho com C# e .NET, PHP e Python. Procuro uma oportunidade para contribuir com um time e continuar aprendendo.",
-  tech:"Tecnologias",gBack:"Back-end",gFront:"Front-end",gTools:"Ferramentas",contactP:"Quer conversar sobre uma vaga ou um projeto?"},
- en:{title:"Pedro Carrero | Systems Development",desc:"Portfolio of Pedro Carrero, Systems Development student in Campinas, Brazil. Back-end and web.",
-  navAria:"Main",navProjects:"Projects",navAbout:"About",navContact:"Contact",
-  role:"Systems Development student",tag:"I build web applications and back-ends, and use AI where it solves a real problem.",
-  agroKind:"Capstone",agroDesc:"A system that diagnoses diseases in vegetable crops from a photo, using AI computer vision.",
-  agroB1:"Identifies the plant and suggests a diagnosis from the image.",agroB2:"History of diagnoses and a catalog of vegetables.",agroB3:"Integrates the Gemini API, with prompts optimized to use fewer tokens.",
-  cifraKind:"Web app",cifraDesc:"A personal finance tracker that answers one question: how much is left this month? Log by text, voice or photo and the AI does the math.",
-  cifraB1:"AI chat assistant and an automatically generated monthly report.",cifraB2:"Category limits, goals, accounts, cards and invoices, with subscription detection.",cifraB3:"Installable on your phone, with biometric or PIN lock and the CPF stored only as a hash.",code:"View code",site:"Open site",
-  photoAlt:"Pedro Carrero in profile, looking at the night skyline",live:"Live preview",copy:"Copy email",copied:"Copied",mailLbl:"Email",
-  about1:"I study Systems Development at Etec de Nova Odessa, in Campinas, and build personal projects as well as work for companies and friends.",
-  about2:"I started with front-end (HTML, CSS and JavaScript) and now also work with C# and .NET, PHP and Python. I'm looking for an opportunity to contribute to a team and keep learning.",
-  tech:"Technologies",gBack:"Back-end",gFront:"Front-end",gTools:"Tools",contactP:"Want to talk about a role or a project?"}
-};
-function setLang(l){
-  var d=T[l];r.lang=l==="pt"?"pt-BR":"en";document.title=d.title;
-  document.querySelector('meta[name=description]').content=d.desc;
-  document.querySelector('meta[property="og:description"]').content=d.desc;
-  document.querySelectorAll("[data-i18n]").forEach(function(e){e.textContent=d[e.dataset.i18n]});
-  document.querySelectorAll("[data-i18n-aria]").forEach(function(e){e.setAttribute("aria-label",d[e.dataset.i18nAria])});
-  document.querySelectorAll("[data-i18n-alt]").forEach(function(e){e.alt=d[e.dataset.i18nAlt]});
-  document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l===l)});
-  try{localStorage.setItem("lang",l)}catch(e){}
-}
-var saved=null;try{saved=localStorage.getItem("lang")}catch(e){}
-setLang(saved||((navigator.language||"pt").toLowerCase().indexOf("pt")===0?"pt":"en"));
-document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.dataset.l)})});
-document.getElementById("ano").textContent=new Date().getFullYear();
-
-/* destaque de luz que segue o cursor */
-if(matchMedia("(pointer:fine)").matches){
-  addEventListener("pointermove",function(e){r.style.setProperty("--mx",e.clientX+"px");r.style.setProperty("--my",e.clientY+"px")},{passive:true});
-}
-/* item ativo no menu */
-var links=document.querySelectorAll("nav a,.tb a");
-var io=new IntersectionObserver(function(es){es.forEach(function(en){
-  if(en.isIntersecting){links.forEach(function(a){a.setAttribute("aria-current",a.getAttribute("href")==="#"+en.target.id)})}
-})},{rootMargin:"-40% 0px -55% 0px"});
-document.querySelectorAll("main section").forEach(function(s){io.observe(s)});
-/* hora em Campinas */
-var fmt=new Intl.DateTimeFormat("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"America/Sao_Paulo"});
-function tick(){document.getElementById("hora").textContent=fmt.format(new Date())}
-tick();setInterval(tick,30000);
-/* copiar e-mail */
-var cb=document.getElementById("copiar"),email="pedroagostinhocarrero@gmail.com";
-cb.addEventListener("click",function(){
-  var done=function(){var t=T[r.lang==="en"?"en":"pt"];cb.textContent=t.copied;setTimeout(function(){cb.textContent=t.copy},1800)};
-  if(navigator.clipboard){navigator.clipboard.writeText(email).then(done,function(){location.href="mailto:"+email})}
-  else{location.href="mailto:"+email}
-});
-</script>
-</body>
+    <script src="assets/js/main.js" defer></script>
+  </body>
 </html>
