@@ -33,7 +33,7 @@ var T = {
     copied: "Copiado",
     mailLbl: "E-mail",
     about1:
-      "Curso Desenvolvimento de Sistemas na Etec de Nova Odessa, em Campinas, e desenvolvo projetos pessoais e trabalhos para empresas e colegas.",
+      "Curso Desenvolvimento de Sistemas na Etec de Nova Odessa, na região de Campinas, e desenvolvo projetos pessoais e trabalhos para empresas e colegas.",
     about2:
       "Comecei pelo front-end, com HTML, CSS e JavaScript, e hoje também trabalho com C# e .NET, PHP e Python. Procuro uma oportunidade para contribuir com um time e continuar aprendendo.",
     tech: "Tecnologias",
@@ -74,7 +74,7 @@ var T = {
     copied: "Copied",
     mailLbl: "Email",
     about1:
-      "I study Systems Development at Etec de Nova Odessa, in Campinas, and build personal projects as well as work for companies and friends.",
+      "I study Systems Development at Etec de Nova Odessa, in the Campinas region, and build personal projects as well as work for companies and friends.",
     about2:
       "I started with front-end (HTML, CSS and JavaScript) and now also work with C# and .NET, PHP and Python. I'm looking for an opportunity to contribute to a team and keep learning.",
     tech: "Technologies",
