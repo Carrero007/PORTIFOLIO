@@ -2,7 +2,7 @@ var r = document.documentElement;
 var T = {
   pt: {
     title: "Pedro Carrero | Desenvolvimento de Sistemas",
-    desc: "Portfólio de Pedro Carrero, estudante de Desenvolvimento de Sistemas em Campinas, SP. Back-end e web.",
+    desc: "Portfólio de Pedro Carrero, estudante de Desenvolvimento de Sistemas em Campinas, SP. Back-end, web e IA. Finalista da 14ª Mostra de Ciências e Tecnologia Instituto 3M (2026) com o AgroScan.",
     navAria: "Principal",
     navProjects: "Projetos",
     navAbout: "Sobre",
@@ -10,12 +10,16 @@ var T = {
     role: "Estudante de Desenvolvimento de Sistemas",
     tag: "Crio aplicações web e back-end, e uso IA onde ela resolve um problema de verdade.",
     agroKind: "TCC",
+    agroBadge:
+      "Finalista · 14ª Mostra de Ciências e Tecnologia Instituto 3M (2026)",
     agroDesc:
-      "Sistema que diagnostica doenças em hortaliças a partir de uma foto, usando visão computacional com IA.",
+      "Plataforma multiplataforma que diagnostica pragas e doenças em hortaliças a partir de uma foto, usando visão computacional com IA.",
     agroB1: "Identifica a planta e indica o diagnóstico a partir da imagem.",
     agroB2: "Histórico de diagnósticos e catálogo de hortaliças.",
     agroB3:
       "Integração com a API Gemini, com prompts otimizados para gastar menos tokens.",
+    agroB4:
+      "Categoria Ciências Agrárias. Desenvolvido em equipe na ETEC Ferrucio Humberto Gazzetta (Nova Odessa, SP).",
     cifraKind: "Web app",
     cifraDesc:
       "Controle financeiro que responde uma pergunta: quanto sobrou este mês? Você registra por texto, voz ou foto e a IA faz a conta.",
@@ -26,6 +30,9 @@ var T = {
     cifraB3:
       "Instalável no celular, com bloqueio por biometria ou PIN e CPF guardado só como hash.",
     code: "Ver código",
+    video: "Ver vídeo",
+    agroShotAlt: "Tela do sistema AgroScan",
+    agroShotPh: "Espaço para imagem do sistema",
     site: "Abrir site",
     photoAlt: "Pedro Carrero de perfil, olhando para o horizonte à noite",
     live: "Prévia ao vivo",
@@ -33,7 +40,7 @@ var T = {
     copied: "Copiado",
     mailLbl: "E-mail",
     about1:
-      "Curso Desenvolvimento de Sistemas na Etec de Nova Odessa, na região de Campinas, e desenvolvo projetos pessoais e trabalhos para empresas e colegas.",
+      "Curso Desenvolvimento de Sistemas na Etec de Nova Odessa, na região de Campinas, e desenvolvo projetos pessoais e trabalhos para empresas e colegas. Meu TCC, o AgroScan, foi finalista da 14ª Mostra de Ciências e Tecnologia Instituto 3M (2026).",
     about2:
       "Comecei pelo front-end, com HTML, CSS e JavaScript, e hoje também trabalho com C# e .NET, PHP e Python. Procuro uma oportunidade para contribuir com um time e continuar aprendendo.",
     tech: "Tecnologias",
@@ -44,7 +51,7 @@ var T = {
   },
   en: {
     title: "Pedro Carrero | Systems Development",
-    desc: "Portfolio of Pedro Carrero, Systems Development student in Campinas, Brazil. Back-end and web.",
+    desc: "Portfolio of Pedro Carrero, Systems Development student in Campinas, Brazil. Back-end, web and AI. Finalist at the 14th 3M Institute Science and Technology Fair (2026) with AgroScan.",
     navAria: "Main",
     navProjects: "Projects",
     navAbout: "About",
@@ -52,12 +59,16 @@ var T = {
     role: "Systems Development student",
     tag: "I build web applications and back-ends, and use AI where it solves a real problem.",
     agroKind: "Capstone",
+    agroBadge:
+      "Finalist · 14th 3M Institute Science and Technology Fair (2026)",
     agroDesc:
-      "A system that diagnoses diseases in vegetable crops from a photo, using AI computer vision.",
+      "A multiplatform system that diagnoses pests and diseases in vegetable crops from a photo, using AI computer vision.",
     agroB1: "Identifies the plant and suggests a diagnosis from the image.",
     agroB2: "History of diagnoses and a catalog of vegetables.",
     agroB3:
       "Integrates the Gemini API, with prompts optimized to use fewer tokens.",
+    agroB4:
+      "Agricultural Sciences category. Built as a team at ETEC Ferrucio Humberto Gazzetta (Nova Odessa, SP).",
     cifraKind: "Web app",
     cifraDesc:
       "A personal finance tracker that answers one question: how much is left this month? Log by text, voice or photo and the AI does the math.",
@@ -67,6 +78,9 @@ var T = {
     cifraB3:
       "Installable on your phone, with biometric or PIN lock and the CPF stored only as a hash.",
     code: "View code",
+    video: "Watch video",
+    agroShotAlt: "AgroScan system screenshot",
+    agroShotPh: "Space for system image",
     site: "Open site",
     photoAlt: "Pedro Carrero in profile, looking at the night skyline",
     live: "Live preview",
@@ -74,7 +88,7 @@ var T = {
     copied: "Copied",
     mailLbl: "Email",
     about1:
-      "I study Systems Development at Etec de Nova Odessa, in the Campinas region, and build personal projects as well as work for companies and friends.",
+      "I study Systems Development at Etec de Nova Odessa, in the Campinas region, and build personal projects as well as work for companies and friends. My capstone, AgroScan, was a finalist at the 14th 3M Institute Science and Technology Fair (2026).",
     about2:
       "I started with front-end (HTML, CSS and JavaScript) and now also work with C# and .NET, PHP and Python. I'm looking for an opportunity to contribute to a team and keep learning.",
     tech: "Technologies",

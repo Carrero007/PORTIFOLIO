@@ -301,6 +301,18 @@ h2 {
   height: 1px;
   background: var(--accent);
 }
+.badge {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--chip);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.2rem 0.8rem;
+  line-height: 1.4;
+}
 .cap {
   display: block;
   margin-top: 0.8rem;
@@ -334,6 +346,46 @@ h2 {
 }
 .proj:hover .go {
   padding-right: 0.5rem;
+}
+.go-video {
+  margin-left: 1.25rem;
+}
+.shot {
+  margin: 0;
+  width: 220px;
+  aspect-ratio: 9 / 16;
+  border: 1px dashed var(--line);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--chip);
+}
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.shot-ph {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 1rem;
+}
+@media (max-width: 1000px) {
+  .shot {
+    width: 200px;
+  }
+}
+@media (max-width: 640px) {
+  .shot {
+    width: 100%;
+    max-width: 14rem;
+  }
+  .go-video {
+    margin-left: 0.9rem;
+  }
 }
 .tags {
   display: flex;
