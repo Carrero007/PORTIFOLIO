@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://carrero007.github.io/PORTIFOLIO/sitemap.xml

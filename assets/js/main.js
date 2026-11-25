@@ -12,6 +12,14 @@ var T = {
     ongoing: "em andamento",
     done: "concluído",
     certs: "Certificações e prêmios",
+    navRec: "Recomendações",
+    cv: "Baixar currículo",
+    lgMain: "Uso no dia a dia",
+    lgKnown: "Já usei",
+    agroArch: "Arquitetura",
+    agroF1: "Web → API ASP.NET Core → SQL Server",
+    agroF2: "API → Gemini, com retry e backoff em falhas temporárias",
+    agroF3: "Web → Open-Meteo, clima por geolocalização",
     role: "Estudante de Desenvolvimento de Sistemas",
     tag: "Crio aplicações web e back-end, e uso IA onde ela resolve um problema de verdade.",
     agroKind: "TCC",
@@ -66,6 +74,14 @@ var T = {
     ongoing: "in progress",
     done: "completed",
     certs: "Certifications and awards",
+    navRec: "Recommendations",
+    cv: "Download résumé",
+    lgMain: "Daily use",
+    lgKnown: "Have used",
+    agroArch: "Architecture",
+    agroF1: "Web → ASP.NET Core API → SQL Server",
+    agroF2: "API → Gemini, with retry and backoff on transient errors",
+    agroF3: "Web → Open-Meteo, weather by geolocation",
     role: "Systems Development student",
     tag: "I build web applications and back-ends, and use AI where it solves a real problem.",
     agroKind: "Capstone",
@@ -129,6 +145,13 @@ var EDU = {
         short: "ETEC Nova Odessa",
       },
     },
+  ],
+  /* Marcos na linha do tempo. "at" = AAAA-MM. Sem "at", o marco não aparece. */
+  marks: [
+    { at: "2024-09", pt: "CUCO 2024", en: "CUCO 2024" },
+    { at: "2025-09", pt: "CUCO 2025", en: "CUCO 2025" },
+    { at: "2026-09", pt: "TOEIC", en: "TOEIC" },
+    { at: "", pt: "Mostra 3M", en: "3M Fair" }, // AJUSTE: preencha o mês, ex.: "2026-10"
   ],
   /* Certificações: copie o modelo para dentro da lista.
      {
@@ -210,6 +233,14 @@ function renderEdu(l) {
   td.style.left = pc(nm);
   bars.textContent = "";
   list.textContent = "";
+  var mk = document.getElementById("tl-marks");
+  mk.textContent = "";
+  EDU.marks.forEach(function (m) {
+    if (!m.at) return;
+    var li = el("li", "", m[l]);
+    li.style.left = pc(mo(m.at) - rs + 0.5);
+    mk.appendChild(li);
+  });
   EDU.items.forEach(function (it) {
     var t = it[l],
       li = el("li"),
@@ -262,6 +293,36 @@ function renderEdu(l) {
   });
 }
 
+/* ===== RECOMENDAÇÕES: adicione aqui; a seção só aparece quando houver itens =====
+   {
+     name: "Nome da pessoa",
+     url: "https://linkedin.com/in/...",   // opcional
+     pt: { role: "Cargo, empresa", text: "Texto da recomendação" },
+     en: { role: "Role, company", text: "Recommendation text" }
+   }
+*/
+var REC = [];
+function renderRec(l) {
+  var sec = document.getElementById("recomendacoes"),
+    box = document.getElementById("rec-list");
+  box.textContent = "";
+  sec.hidden = !REC.length;
+  REC.forEach(function (x) {
+    var f = el("figure", "rec-card"),
+      cap = el("figcaption"),
+      n = el(x.url ? "a" : "span", "", x.name);
+    if (x.url) {
+      n.href = x.url;
+      n.target = "_blank";
+      n.rel = "noopener";
+    }
+    cap.appendChild(n);
+    cap.appendChild(el("small", "", x[l].role));
+    f.appendChild(el("blockquote", "", x[l].text));
+    f.appendChild(cap);
+    box.appendChild(f);
+  });
+}
 function setLang(l) {
   var d = T[l];
   r.lang = l === "pt" ? "pt-BR" : "en";
@@ -281,6 +342,7 @@ function setLang(l) {
     b.setAttribute("aria-pressed", b.dataset.l === l);
   });
   renderEdu(l);
+  renderRec(l);
   try {
     localStorage.setItem("lang", l);
   } catch (e) {}

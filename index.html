@@ -20,10 +20,15 @@
       property="og:description"
       content="Estudante de Desenvolvimento de Sistemas. Back-end, web e IA. Finalista da Mostra 3M 2026."
     />
+    <meta property="og:url" content="https://carrero007.github.io/PORTIFOLIO/" />
     <meta
       property="og:image"
-      content="https://carrero007.github.io/PORTIFOLIO/assets/1000662549.jpg"
+      content="https://carrero007.github.io/PORTIFOLIO/assets/og.png"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pedro Carrero, Desenvolvimento de Sistemas" />
+    <link rel="canonical" href="https://carrero007.github.io/PORTIFOLIO/" />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23a855f7'/%3E%3Cpath d='M11 24V8h6a5 5 0 010 10h-6' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E"
@@ -69,6 +74,7 @@
           de verdade.
         </p>
         <p class="clock">Campinas, SP · <span id="hora"></span></p>
+        <a class="cv" href="assets/curriculo-pedro-carrero.pdf" download data-i18n="cv">Baixar currículo</a>
         <nav data-i18n-aria="navAria" aria-label="Principal">
           <ul>
             <li><a href="#sobre" data-i18n="navAbout">Sobre</a></li>
@@ -168,9 +174,16 @@
                     Ferrucio Humberto Gazzetta (Nova Odessa, SP).
                   </li>
                 </ul>
+                <h4 class="arch" data-i18n="agroArch">Arquitetura</h4>
+                <ul class="flow">
+                  <li data-i18n="agroF1">Web → API ASP.NET Core → SQL Server</li>
+                  <li data-i18n="agroF2">API → Gemini, com retry e backoff em falhas temporárias</li>
+                  <li data-i18n="agroF3">Web → Open-Meteo, clima por geolocalização</li>
+                </ul>
                 <ul class="tags">
                   <li>C#</li>
                   <li>.NET</li>
+                  <li>SQL Server</li>
                   <li>Gemini</li>
                   <li>JavaScript</li>
                 </ul>
@@ -263,6 +276,7 @@
                   ><span data-i18n="today">hoje</span></span
                 >
                 <ul class="tl-bars" id="tl-bars"></ul>
+                <ul class="tl-marks" id="tl-marks" aria-hidden="true"></ul>
               </div>
             </div>
           </figure>
@@ -273,8 +287,14 @@
           </div>
         </section>
 
+        <section id="recomendacoes" hidden>
+          <h2 data-i18n="navRec">Recomendações</h2>
+          <div class="rec-list" id="rec-list"></div>
+        </section>
+
         <section id="stack">
           <h2 data-i18n="tech">Tecnologias</h2>
+          <p class="legend"><span class="lg-main" data-i18n="lgMain">Uso no dia a dia</span><span class="lg-known" data-i18n="lgKnown">Já usei</span></p>
           <div class="stack">
             <div>
               <h3 data-i18n="gBack">Back-end</h3>
@@ -282,10 +302,10 @@
                 <li>C#</li>
                 <li>.NET</li>
                 <li>Node.js</li>
-                <li>PHP</li>
+                <li class="known">PHP</li>
                 <li>Python</li>
-                <li>MySQL</li>
-                <li>SQL Server</li>
+                <li class="known">MySQL</li>
+                <li class="known">SQL Server</li>
               </ul>
             </div>
             <div>
@@ -294,8 +314,8 @@
                 <li>JavaScript</li>
                 <li>TypeScript</li>
                 <li>React</li>
-                <li>HTML</li>
-                <li>CSS</li>
+                <li class="known">HTML</li>
+                <li class="known">CSS</li>
               </ul>
             </div>
             <div>
@@ -303,8 +323,8 @@
               <ul class="tags">
                 <li>Git</li>
                 <li>GitHub</li>
-                <li>Linux</li>
-                <li>Azure</li>
+                <li class="known">Linux</li>
+                <li class="known">Azure</li>
               </ul>
             </div>
           </div>
@@ -327,6 +347,7 @@
           >
             Copiar e-mail
           </button>
+          <a class="cv cv-c" href="assets/curriculo-pedro-carrero.pdf" download data-i18n="cv">Baixar currículo</a>
         </section>
 
         <footer>© <span id="ano">2026</span> Pedro Carrero</footer>
