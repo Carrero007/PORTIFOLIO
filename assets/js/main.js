@@ -6,7 +6,12 @@ var T = {
     navAria: "Principal",
     navProjects: "Projetos",
     navAbout: "Sobre",
+    navEdu: "Formação",
     navContact: "Contato",
+    today: "hoje",
+    ongoing: "em andamento",
+    done: "concluído",
+    certs: "Certificações e prêmios",
     role: "Estudante de Desenvolvimento de Sistemas",
     tag: "Crio aplicações web e back-end, e uso IA onde ela resolve um problema de verdade.",
     agroKind: "TCC",
@@ -55,7 +60,12 @@ var T = {
     navAria: "Main",
     navProjects: "Projects",
     navAbout: "About",
+    navEdu: "Education",
     navContact: "Contact",
+    today: "today",
+    ongoing: "in progress",
+    done: "completed",
+    certs: "Certifications and awards",
     role: "Systems Development student",
     tag: "I build web applications and back-ends, and use AI where it solves a real problem.",
     agroKind: "Capstone",
@@ -98,6 +108,160 @@ var T = {
     contactP: "Want to talk about a role or a project?",
   },
 };
+
+/* ===== FORMAÇÃO: edite só este objeto ===== */
+var EDU = {
+  range: { start: "2024-01", end: "2027-12" },
+  items: [
+    {
+      badge: "ETEC",
+      start: "2024-02", // AJUSTE: mês/ano em que você começou
+      end: "2026-12",
+      ongoing: true, // troque para false quando concluir
+      pt: {
+        title: "Técnico em Desenvolvimento de Sistemas",
+        org: "ETEC Ferrucio Humberto Gazzetta · Nova Odessa, SP",
+        short: "ETEC Nova Odessa",
+      },
+      en: {
+        title: "Technical Diploma in Systems Development",
+        org: "ETEC Ferrucio Humberto Gazzetta · Nova Odessa, Brazil",
+        short: "ETEC Nova Odessa",
+      },
+    },
+  ],
+  /* Certificações: copie o modelo para dentro da lista.
+     {
+       pt: { name: "Nome do curso", detail: "Instituição" },
+       en: { name: "Course name", detail: "Institution" },
+       year: "2026",
+       url: "https://link-do-certificado"   // opcional
+     }
+  */
+  certs: [
+    {
+      pt: { name: "Bootcamp SaaS para Barbearias", detail: "Full Stack Club · 20 h" },
+      en: { name: "SaaS Bootcamp for Barbershops", detail: "Full Stack Club · 20 h" },
+      year: "2026",
+    },
+    {
+      pt: { name: "TOEIC Bridge: 84/100", detail: "Listening 40 · Reading 44 · Centro Paula Souza" },
+      en: { name: "TOEIC Bridge: 84/100", detail: "Listening 40 · Reading 44 · Centro Paula Souza" },
+      year: "2026",
+    },
+    {
+      pt: { name: "CUCO USP: Menção Honrosa (Prêmio Destaque na Escola)", detail: "9ª edição, 2ª série" },
+      en: { name: "USP CUCO: Honorable Mention (School Highlight Award)", detail: "9th edition, 2nd year" },
+      year: "2025",
+    },
+    {
+      pt: { name: "Jornada Full Stack", detail: "Hashtag Treinamentos · 8 h" },
+      en: { name: "Full Stack Journey", detail: "Hashtag Treinamentos · 8 h" },
+      year: "2025",
+    },
+    {
+      pt: { name: "Jornada Python", detail: "Hashtag Treinamentos · 8 h" },
+      en: { name: "Python Journey", detail: "Hashtag Treinamentos · 8 h" },
+      year: "2025",
+    },
+    {
+      pt: { name: "CUCO USP: Menção Honrosa (Prêmio Destaque na Escola)", detail: "8ª edição, 1ª série" },
+      en: { name: "USP CUCO: Honorable Mention (School Highlight Award)", detail: "8th edition, 1st year" },
+      year: "2024",
+    },
+  ],
+};
+function mo(v) {
+  var p = v.split("-");
+  return +p[0] * 12 + (+p[1] - 1);
+}
+function el(tag, cls, txt) {
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (txt != null) e.textContent = txt;
+  return e;
+}
+function renderEdu(l) {
+  var d = T[l],
+    rs = mo(EDU.range.start),
+    len = mo(EDU.range.end) - rs + 1,
+    pc = function (v) {
+      return ((v / len) * 100).toFixed(2) + "%";
+    },
+    fm = function (v) {
+      var p = v.split("-");
+      return new Date(+p[0], +p[1] - 1, 1).toLocaleDateString(
+        l === "pt" ? "pt-BR" : "en",
+        { month: "short", year: "numeric" },
+      );
+    };
+  var yrs = document.getElementById("tl-years"),
+    bars = document.getElementById("tl-bars"),
+    list = document.getElementById("edu"),
+    y0 = +EDU.range.start.split("-")[0];
+  yrs.textContent = "";
+  yrs.style.setProperty("--n", Math.ceil(len / 12));
+  for (var i = 0; i < Math.ceil(len / 12); i++)
+    yrs.appendChild(el("li", "", y0 + i));
+  var now = new Date(),
+    nm = now.getFullYear() * 12 + now.getMonth() - rs + 0.5,
+    td = document.getElementById("tl-today");
+  td.style.display = nm >= 0 && nm <= len ? "" : "none";
+  td.style.left = pc(nm);
+  bars.textContent = "";
+  list.textContent = "";
+  EDU.items.forEach(function (it) {
+    var t = it[l],
+      li = el("li"),
+      b = el("div", "tl-bar" + (it.ongoing ? " ongoing" : ""));
+    b.style.left = pc(mo(it.start) - rs);
+    b.style.width = pc(mo(it.end) - mo(it.start) + 1);
+    b.appendChild(el("b", "", t.title));
+    b.appendChild(el("small", "", t.short));
+    li.appendChild(b);
+    bars.appendChild(li);
+    var row = el("li"),
+      mid = el("div");
+    mid.appendChild(el("h3", "", t.title));
+    mid.appendChild(el("p", "", t.org));
+    row.appendChild(el("span", "seal", it.badge));
+    row.appendChild(mid);
+    row.appendChild(
+      el(
+        "p",
+        "when",
+        fm(it.start) +
+          " — " +
+          fm(it.end) +
+          " · " +
+          (it.ongoing ? d.ongoing : d.done),
+      ),
+    );
+    list.appendChild(row);
+  });
+  var cw = document.getElementById("certs-wrap"),
+    cl = document.getElementById("certs");
+  cl.textContent = "";
+  cw.hidden = !EDU.certs.length;
+  EDU.certs.forEach(function (c) {
+    var li = el("li"),
+      n = c[l];
+    if (c.url) {
+      var a = el("a", "", n.name);
+      a.href = c.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      li.appendChild(a);
+    } else {
+      li.appendChild(document.createTextNode(n.name));
+    }
+    li.appendChild(
+      el("span", "", " · " + n.detail + (c.year ? " · " + c.year : "")),
+    );
+    cl.appendChild(li);
+  });
+}
+
 function setLang(l) {
   var d = T[l];
   r.lang = l === "pt" ? "pt-BR" : "en";
@@ -116,6 +280,7 @@ function setLang(l) {
   document.querySelectorAll(".lang button").forEach(function (b) {
     b.setAttribute("aria-pressed", b.dataset.l === l);
   });
+  renderEdu(l);
   try {
     localStorage.setItem("lang", l);
   } catch (e) {}
